@@ -1,0 +1,159 @@
+<div style="margin-top: 9vw" class="container">
+    <div class="row my-5">
+      <div class="col-md-12 text-center">
+        <h1>REGISTRATION FORM</h1>
+      </div>
+    </div>
+    <form method="post" #regform="ngForm" id="reg-form" (ngSubmit)="Submit(regform)">
+      <input type="hidden" name="_token" value="" />
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="reg-box"
+            #name="ngModel"
+            placeholder="Name"
+            value=""
+            name="name"
+            required
+            ngModel
+          />
+          <div *ngIf="name.touched && name.errors?.['required']">
+            Name is required
+          </div>
+        </div>
+        <div class="col-md-4">
+          <input
+            type="email"
+            class="reg-box"
+            #email="ngModel"
+            placeholder="Email"
+            value=""
+            name="email"
+            ngModel
+            required
+          />
+          <div *ngIf="email.touched && email.invalid">
+            Email is required
+          </div>
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="reg-box"
+            #phone="ngModel"
+            minlength="10"
+            placeholder="Phone"
+            name="phone"
+            pattern="[0-9]{0,10}"
+            required
+            ngModel
+          />
+          <div *ngIf="phone.touched && phone.invalid">
+            <div *ngIf="phone.errors?.['minlength']">
+                Phone Number is Invalid
+            </div>
+            <div *ngIf="phone.errors?.['required']">
+                Phone Number is required
+            </div>
+            <div *ngIf="phone.errors?.['pattern']">
+              Only Numbers are allowed
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <select type="text" name="gender" class="reg-box" required>
+            <option disabled="disabled" selected="selected" value="">
+              Gender
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option>Others</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="reg-box"
+            placeholder="City"
+            name="city"
+            required
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="reg-box"
+            placeholder="Country"
+            name="Country"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="reg-box"
+            name="res_add"
+            placeholder="Residential Address"
+            required
+          />
+        </div>
+        <div class="col-md-4">
+          <input
+            type="text"
+            name="pincode"
+            placeholder="Res. pincode"
+            class="reg-box"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input type="text" class="reg-box" placeholder="Institute Full Name" name="insti_name" required>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="reg-box" placeholder="Institute Address" name="insti_add" required>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="reg-box" placeholder="Institute Area Pincode (Optional)" name="insti_pin">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <select name="year" type="text" class="reg-box" required>
+            <option disabled="disabled" selected="selected" value="">
+              Year of study/ Standard
+            </option>
+            <option value="1">First Year</option>
+            <option value="2">Second Year</option>
+            <option value="3">Third Year</option>
+            <option value="4">Fourth Year</option>
+            <option value="5">Fifth Year</option>
+            <option value="6">Post Graduate</option>
+            <option value="7">5th Standard</option>
+            <option value="8">6th Standard</option>
+            <option value="9">7th Standard</option>
+            <option value="10">8th Standard</option>
+            <option value="11">9th Standard</option>
+            <option value="12">10th Standard</option>
+            <option value="13">11th Standard</option>
+            <option value="14">12th Standard</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input class="reg-box" type="number" placeholder="Enter CA referral if any" name="ca_ref" [ngModelOptions]="{ updateOn: 'blur' }" #ca_ref="ngModel" ngModel>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 d-flex justify-content-start">
+          <input class="reg-box" type="submit" value="Submit" style="background: #268AFF;color: white;">
+        </div>
+      </div>
+    </form>
+  </div>
+  
